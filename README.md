@@ -12,9 +12,11 @@ The workflow leverages Foundry for compilation, testing, deployment scripting, a
 
 
 
-Contract Design Principles
+Contract Design Principles:-
 
-The contract is composed with clarity, traceability, and correctness in mind. It inherits from:
+
+(The contract is composed with clarity, traceability, and correctness in mind. It inherits from:)
+
 
 ERC721URIStorage for structured metadata
 
@@ -27,11 +29,13 @@ ReentrancyGuard to protect fund extraction
 
 Minting logic is deterministic. Token IDs are sequential and tied directly to mint order. Minter attribution is recorded for each token, enabling provenance reconstruction if required. Supply boundaries and payment conditions are enforced at the contract level.
 
+
 Administrative control is intentionally minimal. The owner is able to toggle mint availability and execute withdrawals; the contract introduces no privileged metadata paths or central mutation ability.
 
 
 
-Metadata and IPFS Strategy
+Metadata and IPFS Strategy:-
+
 
 Metadata is decentralized and resolved solely through IPFS. The base URI provided at deployment points to a directory where token-specific metadata files are stored. Each token fetches its metadata by appending "tokenId.json" to the base URI.
 
@@ -47,10 +51,7 @@ ipfs://<CID>/
 A standard metadata entry includes fields for name, description, image, and structured attributes. The image field itself is also specified as an ipfs:// reference, maintaining decentralization throughout.
 
 
-
-Repository Anatomy
-
-The repository reflects a professional smart-contract workspace:
+Repository Anatomy:-
 
 .
 ├── src/                        Core contract
@@ -60,11 +61,10 @@ The repository reflects a professional smart-contract workspace:
 ├── Makefile                    Repeatable automation layer
 └── README.md
 
-Scripts are not “samples” — they are operational tools. Each one exists to support deterministic deployment and post-deployment interaction without manual transactions.
 
 
+Tooling and Workflow:-
 
-Tooling and Workflow
 
 Foundry is used as the development foundation. The Makefile consolidates common forge commands into a reproducible workflow. Developers and CI pipelines both benefit from this structure.
 
@@ -90,9 +90,11 @@ These variables are intentionally not hard-coded to ensure safe CI integration a
 
 
 
-Deployment and Operational Scripts
+Deployment and Operational Scripts:-
 
-Deployment is addressed through a dedicated Foundry script. Post-deployment interactions are equally automated:
+
+(Deployment is addressed through a dedicated Foundry script. Post-deployment interactions are equally automated:)
+
 
 Minting NFCs programmatically
 
@@ -109,9 +111,11 @@ This makes the repository practical not only for learning, but for transferring 
 
 
 
-Test Coverage
+Test Coverage:-
 
-A structured Foundry test suite validates contract invariants and behavioral expectations. Tests include:
+
+(A structured Foundry test suite validates contract invariants and behavioral expectations. Tests include:)
+
 
 Expected supply transitions
 
@@ -130,13 +134,11 @@ Compliance of contract constants
 Burn behavior and access expectations
 
 
-The goal of these tests is correctness rather than brute quantity; however, a deliberate set of twenty tests provides confident behavioral coverage.
+Security Considerations:-
 
 
+(Several security principles guide this implementation:)
 
-Security Considerations
-
-Several security principles guide this implementation:
 
 ETH extraction is guarded against reentrancy
 
@@ -155,7 +157,8 @@ This style of design reduces the need for broad audits and keeps reasoning about
 
 
 
-Extensibility Outlook
+Extensibility Outlook:-
+
 
 The current commit represents a complete and stable ERC721 implementation. Future extensions may include:
 
@@ -178,8 +181,10 @@ The contract was structured so that such features can be layered naturally witho
 
 Author and Licensing
 
+License:
+MIT by default. The project may be relicensed, but the author attribution remains unchanged.
+
 Authored by:
 NEXTECHARHITECT (Smart Contract Developer and Solidity, Foundry, Web3 Engineering)
 
-License:
-MIT by default. The project may be relicensed, but the author attribution remains unchanged.
+
