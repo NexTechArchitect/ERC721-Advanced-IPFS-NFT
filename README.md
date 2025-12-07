@@ -29,7 +29,6 @@ ReentrancyGuard to protect fund extraction
 
 Minting logic is deterministic. Token IDs are sequential and tied directly to mint order. Minter attribution is recorded for each token, enabling provenance reconstruction if required. Supply boundaries and payment conditions are enforced at the contract level.
 
-
 Administrative control is intentionally minimal. The owner is able to toggle mint availability and execute withdrawals; the contract introduces no privileged metadata paths or central mutation ability.
 
 
@@ -39,58 +38,30 @@ Metadata and IPFS Strategy:-
 
 Metadata is decentralized and resolved solely through IPFS. The base URI provided at deployment points to a directory where token-specific metadata files are stored. Each token fetches its metadata by appending "tokenId.json" to the base URI.
 
-This approach avoids external HTTP dependence and ensures persistence compatible with multiple gateways.
-
-Example structure:
-
-ipfs://<CID>/
- ├── 0.json
- ├── 1.json
- ├── ...
-
 A standard metadata entry includes fields for name, description, image, and structured attributes. The image field itself is also specified as an ipfs:// reference, maintaining decentralization throughout.
+
 
 
 Repository Anatomy:-
 
 .
 ├── src/                        Core contract
+
 ├── script/                     Deployment and operational scripts
+
 ├── test/                       Foundry-based test suite
+
 ├── metadata/                   Example metadata files
+
 ├── Makefile                    Repeatable automation layer
+
 └── README.md
 
 
 
-Tooling and Workflow:-
-
-
-Foundry is used as the development foundation. The Makefile consolidates common forge commands into a reproducible workflow. Developers and CI pipelines both benefit from this structure.
-
-The typical local workflow consists of:
-
-Compilation via make build
-
-Test execution via make test
-
-Deployment via make deploy
-
-Operational calls (minting, transferring, withdrawing) through corresponding make targets
-
-
-Environment requirements are confined to:
-
-SEPOLIA_RPC_URL
-
-PRIVATE_KEY
-
-
-These variables are intentionally not hard-coded to ensure safe CI integration and portability.
-
-
-
 Deployment and Operational Scripts:-
+
+
 
 
 (Deployment is addressed through a dedicated Foundry script. Post-deployment interactions are equally automated:)
@@ -108,6 +79,7 @@ Withdrawing contract funds safely
 
 
 This makes the repository practical not only for learning, but for transferring into actual production environments.
+
 
 
 
@@ -134,6 +106,7 @@ Compliance of contract constants
 Burn behavior and access expectations
 
 
+
 Security Considerations:-
 
 
@@ -154,6 +127,7 @@ No proxy-related risks in the current version
 
 
 This style of design reduces the need for broad audits and keeps reasoning about state transitions straightforward.
+
 
 
 
