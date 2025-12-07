@@ -1,0 +1,49 @@
+{
+  "transactions": [
+    {
+      "hash": "0x24f61ad22f20bdf71012a7da45ea5bfa4004a99582843cd4cde93d7afe1c4e73",
+      "transactionType": "CALL",
+      "contractName": null,
+      "contractAddress": "0x7124f139a67b393380c5a705653ee30d882ada5a",
+      "function": "withdraw(address)",
+      "arguments": [
+        "0x023c6911c69b6c0E70A76C27b23fe1A32b08Bf98"
+      ],
+      "transaction": {
+        "from": "0x023c6911c69b6c0e70a76c27b23fe1a32b08bf98",
+        "to": "0x7124f139a67b393380c5a705653ee30d882ada5a",
+        "gas": "0xb3a3",
+        "value": "0x0",
+        "input": "0x51cff8d9000000000000000000000000023c6911c69b6c0e70a76c27b23fe1a32b08bf98",
+        "nonce": "0x1d",
+        "chainId": "0xaa36a7"
+      },
+      "additionalContracts": [],
+      "isFixedGasLimit": false
+    }
+  ],
+  "receipts": [
+    {
+      "status": "0x1",
+      "cumulativeGasUsed": "0x8ca5b4",
+      "logs": [],
+      "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "type": "0x2",
+      "transactionHash": "0x24f61ad22f20bdf71012a7da45ea5bfa4004a99582843cd4cde93d7afe1c4e73",
+      "transactionIndex": "0x2e",
+      "blockHash": "0xc5437a6cfb4d7decc839e2ea5deb76255d07233713e02768a9412ed5fedc4d20",
+      "blockNumber": "0x95610f",
+      "gasUsed": "0x820f",
+      "effectiveGasPrice": "0xf4fc6",
+      "from": "0x023c6911c69b6c0e70a76c27b23fe1a32b08bf98",
+      "to": "0x7124f139a67b393380c5a705653ee30d882ada5a",
+      "contractAddress": null
+    }
+  ],
+  "libraries": [],
+  "pending": [],
+  "returns": {},
+  "timestamp": 1765123139323,
+  "chain": 11155111,
+  "commit": null
+}

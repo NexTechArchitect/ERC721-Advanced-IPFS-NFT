@@ -1,0 +1,15 @@
+{
+  "name": "Cute Cat #0",
+  "description": "A professional IPFS NFT stored on Lighthouse.",
+  "image": "ipfs://bafkreibd4vl74ihcybka25trm37xyjtdjdbe44txxd4roew6v2vgodlpoa",
+  "attributes": [
+    {
+      "trait_type": "Mood",
+      "value": "Happy"
+    },
+    {
+      "trait_type": "Cuteness",
+      "value": "100"
+    }
+  ]
+}
