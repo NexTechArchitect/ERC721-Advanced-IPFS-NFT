@@ -23,45 +23,45 @@ contract CuteCatNFTTest is Test {
         nft = new CuteCatNFT(baseURI);
     }
 
-    // 1) Owner check
+    // Owner check
     function testOwner() public {
         assertEq(nft.owner(), owner);
     }
 
-    // 2) Mint active initially
+    // Mint active initially
     function testMintActiveInitially() public {
         assertTrue(nft.mintActive());
     }
 
-    // 3) Mint 1 NFT
+    // Mint 1 NFT
     function testMintOne() public {
         vm.prank(user1);
         nft.mint{value: 0.0005 ether}(1);
         assertEq(nft.totalMinted(), 1);
     }
 
-    // 4) Mint multiple
+    // Mint multiple
     function testMintTwo() public {
         vm.prank(user1);
         nft.mint{value: 0.001 ether}(2);
         assertEq(nft.totalMinted(), 2);
     }
 
-    // 5) OwnerOf after mint
+    // OwnerOf after mint
     function testOwnerOfToken() public {
         vm.prank(user1);
         nft.mint{value: 0.0005 ether}(1);
         assertEq(nft.ownerOf(0), user1);
     }
 
-    // 6) Mint fail insufficient ETH
+    // Mint fail insufficient ETH
     function testMintFailLowEth() public {
         vm.prank(user1);
         vm.expectRevert("Not enough ETH");
         nft.mint{value: 0.0001 ether}(1);
     }
 
-    // 7) Mint zero fail
+    // Mint zero fail
     function testMintZeroFail() public {
         vm.prank(user1);
         vm.expectRevert("Amount must be > 0");
