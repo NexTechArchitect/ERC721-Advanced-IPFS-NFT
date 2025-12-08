@@ -68,7 +68,7 @@ contract CuteCatNFTTest is Test {
         nft.mint{value: 0 ether}(0);
     }
 
-    // 8) Metadata correctness
+    // Metadata is correct
     function testTokenUri() public {
         vm.prank(user1);
         nft.mint{value: 0.0005 ether}(1);
@@ -76,14 +76,14 @@ contract CuteCatNFTTest is Test {
         assertEq(uri, "ipfs://test/0.json");
     }
 
-    // 9) Track minter
+    // Track minter
     function testTrackMinter() public {
         vm.prank(user1);
         nft.mint{value: 0.0005 ether}(1);
         assertEq(nft.tokenMinters(0), user1);
     }
 
-    // 10) Burn NFT
+    // Burn NFT
     function testBurnNft() public {
         vm.prank(user1);
         nft.mint{value: 0.0005 ether}(1);
@@ -95,7 +95,7 @@ contract CuteCatNFTTest is Test {
         nft.ownerOf(0);
     }
 
-    // 11) Flip mint active
+    // Flip mint active
     function testFlipMintActive() public {
         assertTrue(nft.mintActive());
         vm.prank(owner);
@@ -103,7 +103,7 @@ contract CuteCatNFTTest is Test {
         assertFalse(nft.mintActive());
     }
 
-    // 12) Mint disabled
+    // Mint disabled
     function testMintFailWhenDisabled() public {
         vm.prank(owner);
         nft.flipMintActive();
@@ -113,7 +113,7 @@ contract CuteCatNFTTest is Test {
         nft.mint{value: 0.0005 ether}(1);
     }
 
-    // 13) Withdraw funds works
+    // Withdraw funds works
     function testWithdrawFunds() public {
         vm.prank(user1);
         nft.mint{value: 0.0005 ether}(1);
@@ -125,14 +125,14 @@ contract CuteCatNFTTest is Test {
         assertGt(afterBal, before);
     }
 
-    // 14) Withdraw fails when empty
+    // Withdraw fails when empty
     function testWithdrawEmptyFail() public {
         vm.prank(owner);
         vm.expectRevert("No ETH");
         nft.withdraw(payable(owner));
     }
 
-    // 15) Multiple minting owners
+    // Multiple minting owners
     function testMultipleOwners() public {
         vm.prank(user1);
         nft.mint{value: 0.001 ether}(2);
@@ -145,7 +145,7 @@ contract CuteCatNFTTest is Test {
         assertEq(nft.ownerOf(2), user2);
     }
 
-    // 16) Supply increases correctly
+    // Supply increases correctly
     function testTotalSupplyIncrements() public {
         vm.prank(user1);
         nft.mint{value: 0.001 ether}(2);
@@ -156,7 +156,7 @@ contract CuteCatNFTTest is Test {
         assertEq(nft.totalMinted(), 4);
     }
 
-    // 17) Minting mapping accuracy
+    // Minting mapping accuracy
     function testMinterMappingAccuracy() public {
         vm.prank(user1);
         nft.mint{value: 0.001 ether}(2);
@@ -170,17 +170,17 @@ contract CuteCatNFTTest is Test {
         assertEq(nft.tokenMinters(3), user2);
     }
 
-    // 18) Contract name correctness
+    // Contract name correctness
     function testContractName() public {
         assertEq(nft.name(), "CuteCat NFT");
     }
 
-    // 19) Contract symbol correctness
+    // Contract symbol correctness
     function testContractSymbol() public {
         assertEq(nft.symbol(), "CATTU");
     }
 
-    // 20) NFT price constant correct
+    // NFT price constant correct
     function testMintPriceCorrect() public {
         assertEq(nft.MINT_PRICE(), 0.0005 ether);
     }
