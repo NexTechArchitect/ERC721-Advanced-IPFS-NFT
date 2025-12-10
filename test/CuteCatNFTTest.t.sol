@@ -175,12 +175,10 @@ contract CuteCatNFTTest is Test {
         assertEq(nft.name(), "CuteCat NFT");
     }
 
-    // Contract symbol correctness
     function testContractSymbol() public {
         assertEq(nft.symbol(), "CATTU");
     }
 
-    // NFT price constant correct
     function testMintPriceCorrect() public {
         assertEq(nft.MINT_PRICE(), 0.0005 ether);
     }
