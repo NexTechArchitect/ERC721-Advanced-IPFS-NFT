@@ -59,14 +59,12 @@ contract CuteCatNFTTest is Test {
         nft.mint{value: 0.0001 ether}(1);
     }
 
-    // Mint zero fail
     function testMintZeroFail() public {
         vm.prank(user1);
         vm.expectRevert("Amount must be > 0");
         nft.mint{value: 0 ether}(0);
     }
 
-    // Metadata is correct
     function testTokenUri() public {
         vm.prank(user1);
         nft.mint{value: 0.0005 ether}(1);
@@ -74,7 +72,6 @@ contract CuteCatNFTTest is Test {
         assertEq(uri, "ipfs://test/0.json");
     }
 
-    // Track minter
     function testTrackMinter() public {
         vm.prank(user1);
         nft.mint{value: 0.0005 ether}(1);
