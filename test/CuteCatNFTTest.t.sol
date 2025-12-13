@@ -37,14 +37,12 @@ contract CuteCatNFTTest is Test {
         assertEq(nft.totalMinted(), 1);
     }
 
-    // Mint multiple
     function testMintTwo() public {
         vm.prank(user1);
         nft.mint{value: 0.001 ether}(2);
         assertEq(nft.totalMinted(), 2);
     }
 
-    // OwnerOf after mint
     function testOwnerOfToken() public {
         vm.prank(user1);
         nft.mint{value: 0.0005 ether}(1);
