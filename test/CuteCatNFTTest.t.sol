@@ -31,7 +31,6 @@ contract CuteCatNFTTest is Test {
         assertTrue(nft.mintActive());
     }
 
-    // Mint 1 NFT
     function testMintOne() public {
         vm.prank(user1);
         nft.mint{value: 0.0005 ether}(1);
