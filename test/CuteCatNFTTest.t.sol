@@ -93,7 +93,6 @@ contract CuteCatNFTTest is Test {
         assertFalse(nft.mintActive());
     }
 
-    // Mint disabled
     function testMintFailWhenDisabled() public {
         vm.prank(owner);
         nft.flipMintActive();
@@ -103,7 +102,6 @@ contract CuteCatNFTTest is Test {
         nft.mint{value: 0.0005 ether}(1);
     }
 
-    // Withdraw funds works
     function testWithdrawFunds() public {
         vm.prank(user1);
         nft.mint{value: 0.0005 ether}(1);
@@ -115,14 +113,12 @@ contract CuteCatNFTTest is Test {
         assertGt(afterBal, before);
     }
 
-    // Withdraw fails when empty
     function testWithdrawEmptyFail() public {
         vm.prank(owner);
         vm.expectRevert("No ETH");
         nft.withdraw(payable(owner));
     }
 
-    // Multiple minting owners
     function testMultipleOwners() public {
         vm.prank(user1);
         nft.mint{value: 0.001 ether}(2);
@@ -135,7 +131,6 @@ contract CuteCatNFTTest is Test {
         assertEq(nft.ownerOf(2), user2);
     }
 
-    // Supply increases correctly
     function testTotalSupplyIncrements() public {
         vm.prank(user1);
         nft.mint{value: 0.001 ether}(2);
