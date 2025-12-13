@@ -75,7 +75,6 @@ contract CuteCatNFTTest is Test {
         assertEq(nft.tokenMinters(0), user1);
     }
 
-    // Burn NFT
     function testBurnNft() public {
         vm.prank(user1);
         nft.mint{value: 0.0005 ether}(1);
@@ -87,7 +86,6 @@ contract CuteCatNFTTest is Test {
         nft.ownerOf(0);
     }
 
-    // Flip mint active
     function testFlipMintActive() public {
         assertTrue(nft.mintActive());
         vm.prank(owner);
