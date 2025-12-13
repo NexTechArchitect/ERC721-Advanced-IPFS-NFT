@@ -151,7 +151,6 @@ contract CuteCatNFTTest is Test {
         assertEq(nft.totalMinted(), 4);
     }
 
-    // Minting mapping accuracy
     function testMinterMappingAccuracy() public {
         vm.prank(user1);
         nft.mint{value: 0.001 ether}(2);
@@ -165,7 +164,6 @@ contract CuteCatNFTTest is Test {
         assertEq(nft.tokenMinters(3), user2);
     }
 
-    // Contract name correctness
     function testContractName() public {
         assertEq(nft.name(), "CuteCat NFT");
     }
