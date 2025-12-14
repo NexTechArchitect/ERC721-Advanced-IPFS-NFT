@@ -118,7 +118,7 @@ contract CuteCatNFTTest is Test {
         vm.expectRevert("No ETH");
         nft.withdraw(payable(owner));
     }
-
+    //multiple owner
     function testMultipleOwners() public {
         vm.prank(user1);
         nft.mint{value: 0.001 ether}(2);
