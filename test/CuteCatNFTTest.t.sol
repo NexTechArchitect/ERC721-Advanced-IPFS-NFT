@@ -55,7 +55,7 @@ contract CuteCatNFTTest is Test {
         vm.expectRevert("Not enough ETH");
         nft.mint{value: 0.0001 ether}(1);
     }
-
+    
     function testMintZeroFail() public {
         vm.prank(user1);
         vm.expectRevert("Amount must be > 0");
@@ -68,13 +68,13 @@ contract CuteCatNFTTest is Test {
         string memory uri = nft.tokenURI(0);
         assertEq(uri, "ipfs://test/0.json");
     }
-
+    
     function testTrackMinter() public {
         vm.prank(user1);
         nft.mint{value: 0.0005 ether}(1);
         assertEq(nft.tokenMinters(0), user1);
     }
-
+    //burn test 
     function testBurnNft() public {
         vm.prank(user1);
         nft.mint{value: 0.0005 ether}(1);
