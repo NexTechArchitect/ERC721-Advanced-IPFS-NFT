@@ -26,7 +26,7 @@ contract CuteCatNFTTest is Test {
     function testOwner() public {
         assertEq(nft.owner(), owner);
     }
-
+    //Active
     function testMintActiveInitially() public {
         assertTrue(nft.mintActive());
     }
