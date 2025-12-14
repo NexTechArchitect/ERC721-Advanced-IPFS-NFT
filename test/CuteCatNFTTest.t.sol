@@ -92,7 +92,7 @@ contract CuteCatNFTTest is Test {
         nft.flipMintActive();
         assertFalse(nft.mintActive());
     }
-
+    //No mint during when mint not active 
     function testMintFailWhenDisabled() public {
         vm.prank(owner);
         nft.flipMintActive();
