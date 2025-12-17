@@ -37,10 +37,10 @@
 **CuteCatNFT** is not a basic tutorial project. It is a robust **ERC-721 implementation** designed for protocol-level environments.
 
 Unlike simple tokens, this project demonstrates the full lifecycle of a digital asset:
-1.  **Minting:** Secure creation of assets.
+1.  **Minting:** Secure creation of assets using `MintCuteCatNft.s.sol`.
 2.  **Storage:** Decentralized metadata handling via IPFS (InterPlanetary File System).
 3.  **Visibility:** Optimized Token URIs ensuring the "Cat" image renders perfectly in wallets like **MetaMask**.
-4.  **Management:** Admin controls to flip minting states and withdraw funds.
+4.  **Management:** Admin controls to flip minting states (`FlipMintActive`) and withdraw funds.
 
 ---
 
@@ -52,18 +52,18 @@ The core value of this project is how it handles data. We do not store images on
 
 ```mermaid
 graph LR
-    User[User / Wallet]
-    Contract[CuteCatNFT.sol]
-    IPFS[IPFS Network]
-    MetaMask[MetaMask Display]
+    User["User / Wallet"]
+    Contract["CuteCatNFT Contract"]
+    IPFS["IPFS Network"]
+    Display["MetaMask / OpenSea"]
 
-    User -- 1. Mint Token --> Contract
-    Contract -- 2. Store Owner ID --> Contract
+    User -- "1. Mint Token" --> Contract
+    Contract -- "2. Store Owner ID" --> Contract
     
-    User -- 3. View Asset --> MetaMask
-    MetaMask -- 4. Query tokenURI --> Contract
-    Contract -- 5. Return ipfs://hash --> MetaMask
-    MetaMask -- 6. Fetch Image --> IPFS
+    User -- "3. View Asset" --> Display
+    Display -- "4. Call tokenURI()" --> Contract
+    Contract -- "5. Return ipfs://..." --> Display
+    Display -- "6. Fetch JSON & Image" --> IPFS
 
 ```
 
@@ -73,15 +73,15 @@ graph LR
 
 ## ⚙️ Script Capabilities
 
-This repository includes a suite of professional Foundry scripts to manage the contract lifecycle, as seen in the `script/` folder.
+This repository includes a suite of professional Foundry scripts to manage the contract lifecycle, located in `script/`.
 
 | Script Name | Functionality |
 | --- | --- |
-| **`DeployCuteCatNft.s.sol`** | Deploys the main logic and configures the initial IPFS base URI. |
-| **`MintCuteCatNft.s.sol`** | Programmatically mints a new Cat NFT to a specified address. |
-| **`FlipMintActive...s.sol`** | A governance toggle to Open/Close the minting phase (State Management). |
-| **`TransferCuteCatNft.s.sol`** | Handles secure ownership transfers between wallets. |
-| **`Withdraw...Funds.s.sol`** | securely pulls ETH from the contract to the owner's wallet. |
+| **`DeployCuteCatNft.s.sol`** | Deploys the contract and sets the initial IPFS Base URI. |
+| **`MintCuteCatNft.s.sol`** | Mints a new NFT to a specific target address. |
+| **`FlipMintActiveCuteCatNft.s.sol`** | **Governance:** Toggles the contract state between `OPEN` and `CLOSED`. |
+| **`CheckTotalMinted...s.sol`** | Verifies the current total supply and mint status. |
+| **`WithdrawCuteCatFunds.s.sol`** | **Security:** Withdraws accumulated ETH to the owner's wallet. |
 
 ---
 
