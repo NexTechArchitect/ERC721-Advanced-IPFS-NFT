@@ -1,159 +1,194 @@
 
 <div align="center">
-  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=28&pause=1000&color=FF69B4&center=true&vCenter=true&width=1000&height=100&lines=CuteCatNFT+Protocol;Dynamic+ERC-721+Architecture;Decentralized+Metadata+(IPFS);Production-Grade+Foundry+Testing" alt="Typing Effect" />
+  <br/>
+  <a href="https://git.io/typing-svg">
+    <img src="https://readme-typing-svg.herokuapp.com?font=JetBrains+Mono&weight=700&size=32&pause=1000&color=FF10F0&center=true&vCenter=true&random=false&width=1000&height=120&lines=CUTECAT_NFT+PROTOCOL;//+Advanced+Dynamic+ERC-721+System;ON-CHAIN+STATE+%7C+IPFS+METADATA;Production-Grade+Foundry+Architecture" alt="Typing Effect" />
+  </a>
 
   <br/>
 
   <p>
-    <a href="https://github.com/NexTechArchitect/CuteCatNFT">
-      <img src="https://img.shields.io/badge/Standard-ERC--721-363636?style=for-the-badge&logo=ethereum&logoColor=white" />
-    </a>
-    <img src="https://img.shields.io/badge/Storage-IPFS_Pinned-6A0DAD?style=for-the-badge&logo=ipfs&logoColor=white" />
-    <img src="https://img.shields.io/badge/Testing-Foundry_Suite-BE5212?style=for-the-badge&logo=foundry&logoColor=white" />
-    <img src="https://img.shields.io/badge/Logic-Dynamic_Metadata-FF1493?style=for-the-badge&logo=solidity&logoColor=white" />
+    <img src="https://img.shields.io/badge/Standard-ERC721_(OZ)-ff00ff?style=for-the-badge&logo=ethereum&logoColor=white" />
+    <img src="https://img.shields.io/badge/Metadata-Dynamic_IPFS-00e5ff?style=for-the-badge&logo=ipfs&logoColor=white" />
+    <img src="https://img.shields.io/badge/Testing-Foundry_Deterministic-ff9900?style=for-the-badge&logo=foundry&logoColor=white" />
+    <img src="https://img.shields.io/badge/Security-Production_Ready-bf00ff?style=for-the-badge&logo=security-scorecard&logoColor=white" />
   </p>
 
-  <h3>🐱 A Production-Grade Dynamic NFT Infrastructure</h3>
-  <p width="80%">
-    <b>Bridging On-Chain Logic with Off-Chain Immutability.</b><br/>
-    A reference implementation for scalable, testable, and metadata-rich NFT systems built for the modern Web3 ecosystem.
+  <p width="90%">
+    <b>A state-of-the-art decentralized application bridging rigorous on-chain logic with flexible off-chain storage.</b><br/>
+    Designed to demonstrate how evolving, state-dependent assets are architected for the modern Web3 ecosystem.
   </p>
 
   <br/>
+  <br/>
 
-  <h3>🐾 System Modules</h3>
-  <p>
-    <a href="#-architectural-overview"><strong>🏗 Architecture</strong></a> &nbsp;|&nbsp;
-    <a href="#-dynamic-metadata-engine"><strong>🎨 Metadata Engine</strong></a> &nbsp;|&nbsp;
-    <a href="#-technical-specifications"><strong>⚙️ Specs</strong></a> &nbsp;|&nbsp;
-    <a href="#-testing--reliability"><strong>🛡 Reliability</strong></a> &nbsp;|&nbsp;
-    <a href="#-use-cases"><strong>🚀 Usage</strong></a>
-  </p>
+  <code>
+  [ <a href="#-protocol-manifesto">📜 Manifesto</a> ] ---
+  [ <a href="#-dynamic-state-engine">🧠 Dynamic Engine</a> ] ---
+  [ <a href="#-system-architecture">🏗 Architecture</a> ] ---
+  [ <a href="#-testing--reliability">🛡 Reliability</a> ] ---
+  [ <a href="#-tech-matrix">💻 Tech Stack</a> ]
+  </code>
 
+  <br/>
+  <br/>
 </div>
 
 ---
 
-## 🏗 Architectural Overview
+## 📜 Protocol Manifesto
 
-**CuteCatNFT** is not merely a token; it is a full-stack NFT protocol designed to demonstrate **Clean Architecture**. It decouples the *Token Standard* (Who owns it?) from the *Metadata Layer* (What does it look like?).
+**CuteCatNFT** is not a trivial profile picture project. It is a technical reference implementation for **senior-grade NFT systems**.
 
-### 🧬 Data Resolution Flow
+Most NFTs are static pointers to centralized servers. This protocol is different. It implements a **Dynamic State Machine** directly on the Ethereum blockchain. The visual representation of the NFT (the metadata stored on IPFS) changes autonomously based on on-chain interactions and logic.
+
+This project exists to prove that decentralized assets can be **interactive, evolving, and immutable** simultaneously, without relying on centralized backends to update metadata.
+
+---
+
+## 🧠 Dynamic State Engine
+
+This is the core innovation of the protocol. The NFT's appearance is not fixed; it is a function of its current state on the blockchain.
+
+### The "Evolution" Loop
+
+Instead of hardcoding a single `tokenURI`, the smart contract calculates the URI dynamically whenever it is requested.
 
 ```mermaid
 graph LR
-    User((User))
-    Contract[CuteCatNFT.sol]
-    IPFS_Node{IPFS Network}
-    Metadata[JSON Metadata]
-    Asset[Cat Image]
-
-    subgraph "On-Chain Layer"
-    User -- 1. Query tokenURI() --> Contract
-    Contract -- 2. Construct URI --> URI[ipfs://hash...]
+    Interaction(User Interaction) -->|e.g., feedCat()| OnChainState{Update On-Chain State}
+    
+    subgraph "Smart Contract Logic"
+    OnChainState -- State = HAPPY --> URI_A[Select IPFS Hash A]
+    OnChainState -- State = SAD --> URI_B[Select IPFS Hash B]
     end
-
-    subgraph "Off-Chain Layer"
-    URI -- 3. Resolve --> IPFS_Node
-    IPFS_Node -- 4. Serve JSON --> Metadata
-    Metadata -- 5. Pointer to --> Asset
-    end
+    
+    URI_A --> FinalURI(Resolve tokenURI)
+    URI_B --> FinalURI
+    
+    style Interaction fill:#f9f,stroke:#333,stroke-width:2px,color:#000
+    style OnChainState fill:#b19cd9,stroke:#333,stroke-width:2px,color:#000
+    style FinalURI fill:#00e5ff,stroke:#333,stroke-width:2px,color:#000
 
 ```
 
-> **Design Philosophy:** By leveraging IPFS for storage and Solidity for logic, we ensure the asset remains decentralized while maintaining gas efficiency on the Ethereum mainnet.
+> **Technical Implication:** This allows for assets that level up in games, change based on DeFi holdings, or reflect governance participation, all entirely on-chain.
 
 ---
 
-## 🎨 Dynamic Metadata Engine
+## 🏗 System Architecture
 
-This project goes beyond static JPEGs. It implements **Dynamic Metadata Handling**, allowing the NFT's data to evolve based on on-chain interactions.
+The codebase follows a strict **Separation of Concerns** pattern to ensure maintainability and upgradeability. The token standard, metadata logic, and storage layers are decoupled.
 
-### 🧩 How it Works
+### 📐 Protocol Stack Diagram
 
-Instead of a hardcoded string, the `tokenURI` is dynamically generated.
+```mermaid
+classDiagram
+    class Core_ERC721 {
+        +mint()
+        +transferFrom()
+        -ownerOf()
+        <<OpenZeppelin>>
+    }
 
-1. **State Change:** A user interacts with the contract (e.g., `feedCat()`).
-2. **Logic Trigger:** The contract updates the internal state variables.
-3. **URI Update:** The `tokenURI` function detects the state change and points to a new IPFS hash (e.g., changing from a *Hungry Cat* to a *Happy Cat*).
+    class CuteCat_Logic {
+        +catState[tokenId]
+        +interactWithCat()
+        -updateStateInternal()
+        <<Custom Business Logic>>
+    }
 
----
+    class Metadata_Resolver {
+        +tokenURI(tokenId) View
+        -constructIPFSUri(state)
+        <<View Layer>>
+    }
 
-## ⚙️ Technical Specifications
+    class IPFS_Storage {
+        Wait_Cat.json
+        Happy_Cat.json
+        Assets(.png)
+        <<Decentralized Storage>>
+    }
 
-This repository serves as a blueprint for **Senior-Level Smart Contract Engineering**.
+    Core_ERC721 <|-- CuteCat_Logic : Inherits Standard
+    CuteCat_Logic --> Metadata_Resolver : Reads State
+    Metadata_Resolver ..> IPFS_Storage : Points to
 
-### 🔹 Core Features
-
-* **ERC-721 Standard:** Built on top of the battle-tested OpenZeppelin implementation for maximum security and wallet compatibility.
-* **Gas Optimization:** Utilizes `string.concat` and optimized storage patterns to reduce minting costs.
-* **Access Control:** strict ownership patterns ensure only authorized entities can toggle specific metadata states.
-
-### 🔹 Tech Stack
-
-| Component | Technology | Role |
-| --- | --- | --- |
-| **Language** | Solidity `^0.8.19` | Smart Contract Logic |
-| **Framework** | Foundry | Testing, Fuzzing, Scripting |
-| **Storage** | IPFS (InterPlanetary File System) | Decentralized Asset Hosting |
-| **Standard** | ERC-721 | Token Interface |
+```
 
 ---
 
 ## 🛡 Testing & Reliability
 
-Reliability is paramount in Web3. This project maintains a **100% Test Coverage** philosophy using Foundry.
+In professional Web3 engineering, "it works on my machine" is not enough. This project utilizes **Foundry** for a rigorous, deterministic testing environment.
 
-### 🧪 Test Suite Breakdown
+### Test Coverage Strategy
 
-* **Unit Tests:** Verify that `mint` correctly assigns ownership and increments IDs.
-* **Metadata Validation:** Ensures `tokenURI` always resolves to a valid IPFS string format.
-* **Edge Cases:** Tests transfer logic, approval mechanisms, and zero-address safeguards.
-* **Fuzzing:** Randomized inputs to ensure the contract handles unexpected data gracefully.
-
-> *The system is designed to be deterministic, fast, and reproducible across any environment.*
-
----
-
-## 🚀 Use Cases & Applications
-
-While themed around "Cute Cats," the underlying architecture is suitable for high-value enterprise applications:
-
-* **🎮 Dynamic Gaming Assets:** Characters that evolve as they level up (XP systems).
-* **🆔 Identity Systems:** Profile NFTs that update based on user reputation or DAO participation.
-* **🏦 DeFi Positions:** NFTs representing liquidity positions that change visuals based on value (Uniswap v3 style).
-* **🎟️ Ticketing:** Tickets that "reveal" their seat number or change state after scanning.
+| Test Layer | Focus Area | Methodology |
+| --- | --- | --- |
+| **Unit Tests** | Core Functions | Isolated testing of `mint`, `approve`, and state updates to ensure atomic correctness. |
+| **State Transition** | Dynamic Logic | Verifying that specific on-chain actions *guarantee* the correct metadata URI change. |
+| **Edge Cases** | Security Boundaries | Testing zero-address inputs, unauthorized state changes, and overflow protection. |
+| **Integration** | IPFS format | Ensuring the constructed URIs conform strictly to IPFS addressing standards. |
 
 ---
+
+## 💻 Tech Matrix & Use Cases
+
+Designed for scalability and future integration.
+
+<table width="100%">
+<tr>
+<td width="50%" valign="top">
+<h3>🧰 The Stack</h3>
+<ul>
+<li><b>Engine:</b> Solidity <code>^0.8.20</code></li>
+<li><b>Framework:</b> Foundry (Forge & Cast)</li>
+<li><b>Standards:</b> ERC-721 (via OpenZeppelin v5)</li>
+<li><b>Storage Layer:</b> IPFS (InterPlanetary File System)</li>
+</ul>
+</td>
+<td width="50%" valign="top">
+<h3>🚀 Potential Applications</h3>
+<ul>
+<li><b>Evolving GameFi Assets</b> (XP-based visuals)</li>
+<li><b>Reputation Identities</b> (DAO activity status)</li>
+<li><b>DeFi Vault Receipts</b> (Visuals change based on APY)</li>
+</ul>
+</td>
+</tr>
+</table>
 
 <div align="center">
+<img src="https://raw.githubusercontent.com/rajput2107/rajput2107/master/Assets/Developer.gif" width="50" />
 
 
 
 
 
-<img src="https://raw.githubusercontent.com/rajput2107/rajput2107/master/Assets/Developer.gif" width="60" />
+<code>Protocol Engineered by NexTechArchitect</code>
 
 
 
 
+<i>Solidity Specialist • Foundry Expert • Web3 Architect</i>
 
-<h3>Engineered by NexTechArchitect</h3>
-<p><i>Smart Contract Developer • Solidity • Web3 Engineering</i></p>
+
 
 
 
 
 <a href="https://github.com/NexTechArchitect">
-<img src="https://skillicons.dev/icons?i=github" height="40" />
+<img src="https://www.google.com/search?q=https://skillicons.dev/icons%3Fi%3Dgithub%26theme%3Ddark" height="35" />
 </a>
 &nbsp;&nbsp;
 <a href="https://linkedin.com/in/amit-kumar-811a11277">
-<img src="https://skillicons.dev/icons?i=linkedin" height="40" />
+<img src="https://www.google.com/search?q=https://skillicons.dev/icons%3Fi%3Dlinkedin%26theme%3Ddark" height="35" />
 </a>
 &nbsp;&nbsp;
 <a href="https://x.com/itZ_AmiT0">
-<img src="https://skillicons.dev/icons?i=twitter" height="40" />
+<img src="https://www.google.com/search?q=https://skillicons.dev/icons%3Fi%3Dtwitter%26theme%3Ddark" height="35" />
 </a>
 
 </div>
@@ -161,4 +196,3 @@ While themed around "Cute Cats," the underlying architecture is suitable for hig
 ```
 
 ```
-
