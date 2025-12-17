@@ -144,15 +144,15 @@ The project maintains high reliability through a comprehensive **Foundry Test Su
 
 
 <a href="https://github.com/NexTechArchitect">
-<img src="https://www.google.com/search?q=https://skillicons.dev/icons%3Fi%3Dgithub%26theme%3Ddark" height="35" />
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/GitHub-181717%3Fstyle%3Dfor-the-badge%26logo%3Dgithub%26logoColor%3Dwhite" alt="GitHub"/>
 </a>
 &nbsp;&nbsp;
 <a href="https://linkedin.com/in/amit-kumar-811a11277">
-<img src="https://www.google.com/search?q=https://skillicons.dev/icons%3Fi%3Dlinkedin%26theme%3Ddark" height="35" />
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/LinkedIn-0077B5%3Fstyle%3Dfor-the-badge%26logo%3Dlinkedin%26logoColor%3Dwhite" alt="LinkedIn"/>
 </a>
 &nbsp;&nbsp;
 <a href="https://x.com/itZ_AmiT0">
-<img src="https://www.google.com/search?q=https://skillicons.dev/icons%3Fi%3Dtwitter%26theme%3Ddark" height="35" />
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/X-000000%3Fstyle%3Dfor-the-badge%26logo%3Dx%26logoColor%3Dwhite" alt="X"/>
 </a>
 
 </div>
