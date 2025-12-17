@@ -1,29 +1,33 @@
 
 <div align="center">
-  <br/>
   <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.herokuapp.com?font=JetBrains+Mono&weight=700&size=30&pause=1000&color=F05133&center=true&vCenter=true&random=false&width=1000&height=100&lines=CUTECAT_NFT_PROTOCOL;Advanced+ERC-721+Architecture;IPFS+Metadata+Integration;Production-Grade+Foundry+Scripts" alt="Typing Effect" />
+    <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=28&pause=1000&color=FF69B4&center=true&vCenter=true&random=false&width=1000&height=100&lines=CUTECAT_NFT_PROTOCOL;Advanced+ERC-721+Architecture;On-Chain+Ownership+%7C+IPFS+Data;Production-Grade+Foundry+Scripts" alt="Typing Effect" />
   </a>
 
   <br/>
 
-  <p><img src="https://img.shields.io/badge/Standard-ERC721_(OZ)-363636?style=for-the-badge&logo=ethereum&logoColor=white" />
-    <img src="https://img.shields.io/badge/Storage-IPFS_Pinned-6A0DAD?style=for-the-badge&logo=ipfs&logoColor=white" />
- 
+  <p>
+    <img src="https://img.shields.io/badge/Standard-ERC721_(OZ)-2E2E2E?style=for-the-badge&logo=ethereum&logoColor=white" />
+    <img src="https://img.shields.io/badge/Storage-IPFS_Decentralized-6A0DAD?style=for-the-badge&logo=ipfs&logoColor=white" />
+    <img src="https://img.shields.io/badge/Testing-Foundry_Forge-FF4500?style=for-the-badge&logo=foundry&logoColor=white" />
+    <img src="https://img.shields.io/badge/Asset-Dynamic_Metadata-00BFFF?style=for-the-badge&logo=json&logoColor=white" />
+  </p>
 
   <p width="90%">
     <b>A production-grade NFT system demonstrating clean separation of concerns.</b><br/>
-    Bridging on-chain ownership with off-chain IPFS metadata to ensure your assets are viewable in MetaMask and marketplaces.
+    Bridging on-chain ownership with off-chain IPFS metadata to ensure your assets are permanent and viewable in MetaMask.
   </p>
 
   <br/>
 
-  <p>
-    <a href="#-project-overview"><strong>📌 Overview</strong></a> &nbsp;|&nbsp;
-    <a href="#-ipfs-architecture"><strong>🏗 Architecture</strong></a> &nbsp;|&nbsp;
-    <a href="#-script-capabilities"><strong>⚙️ Scripts</strong></a> &nbsp;|&nbsp;
-    <a href="#-tech-stack"><strong>💻 Tech Stack</strong></a>
-  </p>
+  <table>
+    <tr>
+      <td align="center"><a href="#-project-overview"><strong>📌 Overview</strong></a></td>
+      <td align="center"><a href="#-ipfs-architecture"><strong>🏗 Architecture</strong></a></td>
+      <td align="center"><a href="#-script-capabilities"><strong>⚙️ Scripts</strong></a></td>
+      <td align="center"><a href="#-tech-stack"><strong>💻 Tech Stack</strong></a></td>
+    </tr>
+  </table>
 
 </div>
 
@@ -34,16 +38,17 @@
 **CuteCatNFT** is not a basic tutorial project. It is a robust **ERC-721 implementation** designed for protocol-level environments.
 
 Unlike simple tokens, this project demonstrates the full lifecycle of a digital asset:
-1.  **Minting:** Secure creation of assets using `MintCuteCatNft.s.sol`.
-2.  **Storage:** Decentralized metadata handling via IPFS (InterPlanetary File System).
-3.  **Visibility:** Optimized Token URIs ensuring the "Cat" image renders perfectly in wallets like **MetaMask**.
-4.  **Management:** Admin controls to flip minting states (`FlipMintActive`) and withdraw funds.
+
+* **🔒 Secure Minting:** Assets are created using rigorous checks via `MintCuteCatNft.s.sol`.
+* **🌍 Decentralized Storage:** Metadata is not on a server; it's on **IPFS**, ensuring it can never be deleted.
+* **🦊 Wallet Optimized:** Token URIs are formatted specifically to render perfectly in **MetaMask** and **OpenSea**.
+* **🛡️ Admin Controls:** Governance features to flip minting states (`FlipMintActive`) and withdraw funds securely.
 
 ---
 
 ## 🏗 IPFS Architecture
 
-The core value of this project is how it handles data. We do not store images on centralized servers.
+The core value of this project is how it handles data. We utilize a **Split-Stack Architecture**.
 
 ### 🧬 Data Resolution Flow
 
@@ -54,75 +59,53 @@ graph LR
     IPFS["IPFS Network"]
     Display["MetaMask / OpenSea"]
 
-    User -- "1. Mint Token" --> Contract
-    Contract -- "2. Store Owner ID" --> Contract
-    
-    User -- "3. View Asset" --> Display
-    Display -- "4. Call tokenURI()" --> Contract
-    Contract -- "5. Return ipfs://..." --> Display
-    Display -- "6. Fetch JSON & Image" --> IPFS
+    subgraph "On-Chain Layer"
+      User -- "1. Mint Token" --> Contract
+      Contract -- "2. Assign Owner" --> Contract
+    end
+
+    subgraph "Off-Chain Layer"
+      User -- "3. View Asset" --> Display
+      Display -- "4. Call tokenURI()" --> Contract
+      Contract -- "5. Return ipfs://..." --> Display
+      Display -- "6. Fetch Image" --> IPFS
+    end
+
+    style Contract fill:#f9f,stroke:#333,stroke-width:2px
+    style IPFS fill:#b19cd9,stroke:#333,stroke-width:2px
 
 ```
 
-> **Result:** The "Cute Cat" image is immutable. It cannot be changed or deleted by a centralized server, ensuring true ownership.
+> **Why this matters:** The "Cute Cat" image is immutable. It relies on cryptographic hashes, not website URLs.
 
 ---
 
 ## ⚙️ Script Capabilities
 
-This repository includes a suite of professional Foundry scripts to manage the contract lifecycle, located in `script/`.
+This repository includes a suite of professional Foundry scripts located in the `script/` folder. These automations replace manual console interactions.
 
-| Script Name | Functionality |
-| --- | --- |
-| **`DeployCuteCatNft.s.sol`** | Deploys the contract and sets the initial IPFS Base URI. |
-| **`MintCuteCatNft.s.sol`** | Mints a new NFT to a specific target address. |
-| **`FlipMintActiveCuteCatNft.s.sol`** | **Governance:** Toggles the contract state between `OPEN` and `CLOSED`. |
-| **`CheckTotalMinted...s.sol`** | Verifies the current total supply and mint status. |
-| **`WithdrawCuteCatFunds.s.sol`** | **Security:** Withdraws accumulated ETH to the owner's wallet. |
+<div align="center">
 
----
+| 📜 Script File | 🛠 Functionality | 🔑 Impact |
+| --- | --- | --- |
+| **`DeployCuteCatNft.s.sol`** | Deployment | Deploys logic & configures IPFS Base URI. |
+| **`MintCuteCatNft.s.sol`** | Interaction | Mints a new NFT to a specific target address. |
+| **`FlipMintActive...s.sol`** | Governance | Toggles contract state (`OPEN` / `CLOSED`). |
+| **`CheckTotalMinted...s.sol`** | Verification | Audits the current total supply on-chain. |
+| **`Withdraw...Funds.s.sol`** | Security | Securely drains ETH to the owner wallet. |
 
-## ✨ Key Features
-
-<table width="100%">
-<tr>
-<td width="50%" valign="top">
-<h3>🔹 On-Chain Logic</h3>
-<ul>
-<li><b>OpenZeppelin Standard:</b> Built on battle-tested ERC721 libraries.</li>
-<li><b>Access Control:</b> Strict ownership checks for admin functions.</li>
-<li><b>Gas Efficiency:</b> Optimized storage packing for lower fees.</li>
-</ul>
-</td>
-<td width="50%" valign="top">
-<h3>🔹 Off-Chain Data</h3>
-<ul>
-<li><b>IPFS Storage:</b> Metadata is distributed, not centralized.</li>
-<li><b>Dynamic URI:</b> The contract generates the correct pointer logic.</li>
-<li><b>Wallet Ready:</b> JSON schemas formatted specifically for MetaMask/OpenSea.</li>
-</ul>
-</td>
-</tr>
-</table>
+</div>
 
 ---
 
-## 🧪 Testing & Reliability
+## 💻 Tech Stack
 
-The project maintains high reliability through a comprehensive **Foundry Test Suite** (`CuteCatNFTTest.t.sol`).
+The project is built using the modern **Ethereum Development Stack**.
 
-* ✅ **Mint Validation:** Ensures users cannot mint beyond supply caps.
-* ✅ **URI Correctness:** Verifies that `tokenURI(id)` returns the exact IPFS string.
-* ✅ **Transfer Security:** Tests that only owners can move their Cats.
-* ✅ **Withdrawal Logic:** Ensures only the Admin can access contract funds.
-
----
-
-## 🚀 Use Cases
-
-* **Gaming Assets:** Playable characters stored permanently.
-* **Profile Pictures (PFP):** Decentralized identity avatars.
-* **Membership:** NFT-gated access using ownership verification.
+* **Language:** Solidity `^0.8.20`
+* **Framework:** Foundry (Forge, Cast, Anvil)
+* **Standard:** ERC-721 (OpenZeppelin)
+* **Storage:** IPFS (Pinata / NFT.Storage)
 
 ---
 
@@ -139,16 +122,17 @@ The project maintains high reliability through a comprehensive **Foundry Test Su
 
 
 
+
 <a href="https://github.com/NexTechArchitect">
-<img src="https://skillicons.dev/icons?i=github" height="40" />
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/GitHub-181717%3Fstyle%3Dfor-the-badge%26logo%3Dgithub%26logoColor%3Dwhite" alt="GitHub"/>
 </a>
 &nbsp;&nbsp;
 <a href="https://linkedin.com/in/amit-kumar-811a11277">
-<img src="https://skillicons.dev/icons?i=linkedin" height="40" />
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/LinkedIn-0077B5%3Fstyle%3Dfor-the-badge%26logo%3Dlinkedin%26logoColor%3Dwhite" alt="LinkedIn"/>
 </a>
 &nbsp;&nbsp;
 <a href="https://x.com/itZ_AmiT0">
-<img src="https://skillicons.dev/icons?i=twitter" height="40" />
+<img src="https://www.google.com/search?q=https://img.shields.io/badge/X-000000%3Fstyle%3Dfor-the-badge%26logo%3Dx%26logoColor%3Dwhite" alt="X"/>
 </a>
 
 </div>
@@ -156,4 +140,3 @@ The project maintains high reliability through a comprehensive **Foundry Test Su
 ```
 
 ```
-
