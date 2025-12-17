@@ -2,150 +2,132 @@
 <div align="center">
   <br/>
   <a href="https://git.io/typing-svg">
-    <img src="https://readme-typing-svg.herokuapp.com?font=JetBrains+Mono&weight=700&size=30&pause=1000&color=FF10F0&center=true&vCenter=true&random=false&width=1000&height=100&lines=CUTECAT_NFT+PROTOCOL;Advanced+Dynamic+ERC-721;ON-CHAIN+STATE+%7C+IPFS+METADATA" alt="Typing Effect" />
+    <img src="https://readme-typing-svg.herokuapp.com?font=JetBrains+Mono&weight=700&size=30&pause=1000&color=F05133&center=true&vCenter=true&random=false&width=1000&height=100&lines=CUTECAT_NFT_PROTOCOL;Advanced+ERC-721+Architecture;IPFS+Metadata+Integration;Production-Grade+Foundry+Scripts" alt="Typing Effect" />
   </a>
 
   <br/>
 
   <p>
-    <img src="https://img.shields.io/badge/Standard-ERC721_(OZ)-ff00ff?style=for-the-badge&logo=ethereum&logoColor=white" />
-    <img src="https://img.shields.io/badge/Metadata-Dynamic_IPFS-00e5ff?style=for-the-badge&logo=ipfs&logoColor=white" />
-    <img src="https://img.shields.io/badge/Testing-Foundry_Deterministic-ff9900?style=for-the-badge&logo=foundry&logoColor=white" />
+    <img src="https://img.shields.io/badge/Standard-ERC721_(OZ)-363636?style=for-the-badge&logo=ethereum&logoColor=white" />
+    <img src="https://img.shields.io/badge/Storage-IPFS_Pinned-6A0DAD?style=for-the-badge&logo=ipfs&logoColor=white" />
+    <img src="https://img.shields.io/badge/Testing-Foundry_Suite-BE5212?style=for-the-badge&logo=foundry&logoColor=white" />
+    <img src="https://img.shields.io/badge/Asset-Dynamic_Cat_Art-FF1493?style=for-the-badge&logo=artstation&logoColor=white" />
   </p>
 
   <p width="90%">
-    <b>A state-of-the-art decentralized application bridging on-chain logic with flexible storage.</b>
+    <b>A production-grade NFT system demonstrating clean separation of concerns.</b><br/>
+    Bridging on-chain ownership with off-chain IPFS metadata to ensure your assets are viewable in MetaMask and marketplaces.
   </p>
 
   <br/>
 
   <p>
-    <a href="#-protocol-manifesto"><strong>📜 Manifesto</strong></a> &nbsp;|&nbsp;
-    <a href="#-dynamic-state-engine"><strong>🧠 Dynamic Engine</strong></a> &nbsp;|&nbsp;
-    <a href="#-system-architecture"><strong>🏗 Architecture</strong></a> &nbsp;|&nbsp;
-    <a href="#-tech-matrix"><strong>💻 Tech Stack</strong></a>
+    <a href="#-project-overview"><strong>📌 Overview</strong></a> &nbsp;|&nbsp;
+    <a href="#-ipfs-architecture"><strong>🏗 Architecture</strong></a> &nbsp;|&nbsp;
+    <a href="#-script-capabilities"><strong>⚙️ Scripts</strong></a> &nbsp;|&nbsp;
+    <a href="#-tech-stack"><strong>💻 Tech Stack</strong></a>
   </p>
 
 </div>
 
 ---
 
-## 📜 Protocol Manifesto
+## 📌 Project Overview
 
-**CuteCatNFT** is a technical reference implementation for **senior-grade NFT systems**.
+**CuteCatNFT** is not a basic tutorial project. It is a robust **ERC-721 implementation** designed for protocol-level environments.
 
-Most NFTs are static pointers to centralized servers. This protocol implements a **Dynamic State Machine** directly on the Ethereum blockchain. The visual representation (metadata on IPFS) changes autonomously based on user interactions.
-
-This project proves that decentralized assets can be **interactive, evolving, and immutable** simultaneously.
+Unlike simple tokens, this project demonstrates the full lifecycle of a digital asset:
+1.  **Minting:** Secure creation of assets.
+2.  **Storage:** Decentralized metadata handling via IPFS (InterPlanetary File System).
+3.  **Visibility:** Optimized Token URIs ensuring the "Cat" image renders perfectly in wallets like **MetaMask**.
+4.  **Management:** Admin controls to flip minting states and withdraw funds.
 
 ---
 
-## 🧠 Dynamic State Engine
+## 🏗 IPFS Architecture
 
-This is the core innovation. The NFT's appearance is not fixed; it evolves based on on-chain state.
+The core value of this project is how it handles data. We do not store images on centralized servers.
 
-### The "Evolution" Loop
+### 🧬 Data Resolution Flow
 
 ```mermaid
 graph LR
-    User("User Interaction") 
-    Logic{"Update State"} 
-    URI_A["IPFS Hash (Happy)"]
-    URI_B["IPFS Hash (Sad)"]
-    Final["Resolve TokenURI"]
+    User[User / Wallet]
+    Contract[CuteCatNFT.sol]
+    IPFS[IPFS Network]
+    MetaMask[MetaMask Display]
 
-    User -- "feedCat()" --> Logic
+    User -- 1. Mint Token --> Contract
+    Contract -- 2. Store Owner ID --> Contract
     
-    Logic -- "If State is Happy" --> URI_A
-    Logic -- "If State is Sad" --> URI_B
-    
-    URI_A --> Final
-    URI_B --> Final
-
-    style User fill:#f9f,stroke:#333,stroke-width:2px
-    style Logic fill:#b19cd9,stroke:#333,stroke-width:2px
-    style Final fill:#00e5ff,stroke:#333,stroke-width:2px
+    User -- 3. View Asset --> MetaMask
+    MetaMask -- 4. Query tokenURI --> Contract
+    Contract -- 5. Return ipfs://hash --> MetaMask
+    MetaMask -- 6. Fetch Image --> IPFS
 
 ```
 
-> **Technical Implication:** This architecture allows for assets that "level up" or change appearance without centralized databases.
+> **Result:** The "Cute Cat" image is immutable. It cannot be changed or deleted by a centralized server, ensuring true ownership.
 
 ---
 
-## 🏗 System Architecture
+## ⚙️ Script Capabilities
 
-The codebase follows a strict **Separation of Concerns** pattern.
+This repository includes a suite of professional Foundry scripts to manage the contract lifecycle, as seen in the `script/` folder.
 
-### 📐 Protocol Stack
-
-```mermaid
-classDiagram
-    class Core_ERC721 {
-        +mint()
-        +transferFrom()
-        +ownerOf()
-    }
-
-    class CuteCat_Logic {
-        +catState mapping
-        +interactWithCat()
-        -updateStateInternal()
-    }
-
-    class Metadata_Resolver {
-        +tokenURI()
-        -constructIPFSUri()
-    }
-
-    class IPFS_Storage {
-        JSON_Files
-        Asset_Images
-    }
-
-    Core_ERC721 <|-- CuteCat_Logic : Inherits
-    CuteCat_Logic --> Metadata_Resolver : Uses
-    Metadata_Resolver ..> IPFS_Storage : Points To
-
-```
+| Script Name | Functionality |
+| --- | --- |
+| **`DeployCuteCatNft.s.sol`** | Deploys the main logic and configures the initial IPFS base URI. |
+| **`MintCuteCatNft.s.sol`** | Programmatically mints a new Cat NFT to a specified address. |
+| **`FlipMintActive...s.sol`** | A governance toggle to Open/Close the minting phase (State Management). |
+| **`TransferCuteCatNft.s.sol`** | Handles secure ownership transfers between wallets. |
+| **`Withdraw...Funds.s.sol`** | securely pulls ETH from the contract to the owner's wallet. |
 
 ---
 
-## 🛡 Testing & Reliability
-
-In professional Web3 engineering, reliability is paramount. This project utilizes **Foundry** for deterministic testing.
-
-| Test Layer | Focus Area | Methodology |
-| --- | --- | --- |
-| **Unit Tests** | Core Functions | Isolated testing of `mint`, `approve`, and state updates. |
-| **State Transition** | Dynamic Logic | Verifying that on-chain actions *guarantee* metadata URI changes. |
-| **Edge Cases** | Security | Testing zero-address inputs and unauthorized state changes. |
-| **Integration** | IPFS format | Ensuring constructed URIs conform to IPFS standards. |
-
----
-
-## 💻 Tech Matrix & Use Cases
+## ✨ Key Features
 
 <table width="100%">
 <tr>
 <td width="50%" valign="top">
-<h3>🧰 The Stack</h3>
+<h3>🔹 On-Chain Logic</h3>
 <ul>
-<li><b>Engine:</b> Solidity <code>^0.8.20</code></li>
-<li><b>Framework:</b> Foundry (Forge & Cast)</li>
-<li><b>Standards:</b> ERC-721 (OpenZeppelin)</li>
-<li><b>Storage:</b> IPFS (InterPlanetary File System)</li>
+<li><b>OpenZeppelin Standard:</b> Built on battle-tested ERC721 libraries.</li>
+<li><b>Access Control:</b> Strict ownership checks for admin functions.</li>
+<li><b>Gas Efficiency:</b> Optimized storage packing for lower fees.</li>
 </ul>
 </td>
 <td width="50%" valign="top">
-<h3>🚀 Applications</h3>
+<h3>🔹 Off-Chain Data</h3>
 <ul>
-<li><b>GameFi Assets</b> (XP-based visuals)</li>
-<li><b>Reputation Identities</b> (DAO status)</li>
-<li><b>DeFi Receipts</b> (Visuals based on APY)</li>
+<li><b>IPFS Storage:</b> Metadata is distributed, not centralized.</li>
+<li><b>Dynamic URI:</b> The contract generates the correct pointer logic.</li>
+<li><b>Wallet Ready:</b> JSON schemas formatted specifically for MetaMask/OpenSea.</li>
 </ul>
 </td>
 </tr>
 </table>
+
+---
+
+## 🧪 Testing & Reliability
+
+The project maintains high reliability through a comprehensive **Foundry Test Suite** (`CuteCatNFTTest.t.sol`).
+
+* ✅ **Mint Validation:** Ensures users cannot mint beyond supply caps.
+* ✅ **URI Correctness:** Verifies that `tokenURI(id)` returns the exact IPFS string.
+* ✅ **Transfer Security:** Tests that only owners can move their Cats.
+* ✅ **Withdrawal Logic:** Ensures only the Admin can access contract funds.
+
+---
+
+## 🚀 Use Cases
+
+* **Gaming Assets:** Playable characters stored permanently.
+* **Profile Pictures (PFP):** Decentralized identity avatars.
+* **Membership:** NFT-gated access using ownership verification.
+
+---
 
 <div align="center">
 <img src="https://raw.githubusercontent.com/rajput2107/rajput2107/master/Assets/Developer.gif" width="50" />
