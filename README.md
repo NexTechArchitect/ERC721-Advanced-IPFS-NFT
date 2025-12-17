@@ -7,9 +7,9 @@
 
   <br/>
 
-  <p>
-    <img src="https://img.shields.io/badge/Asset-Dynamic_Cat_Art-FF1493?style=for-the-badge&logo=artstation&logoColor=white" />
-  </p>
+  <p><img src="https://img.shields.io/badge/Standard-ERC721_(OZ)-363636?style=for-the-badge&logo=ethereum&logoColor=white" />
+    <img src="https://img.shields.io/badge/Storage-IPFS_Pinned-6A0DAD?style=for-the-badge&logo=ipfs&logoColor=white" />
+ 
 
   <p width="90%">
     <b>A production-grade NFT system demonstrating clean separation of concerns.</b><br/>
