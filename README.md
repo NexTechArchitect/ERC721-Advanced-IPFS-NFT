@@ -8,9 +8,6 @@
 
   <p>
     <img src="https://img.shields.io/badge/Standard-ERC721_(OZ)-2E2E2E?style=for-the-badge&logo=ethereum&logoColor=white" />
-    <img src="https://img.shields.io/badge/Storage-IPFS_Decentralized-6A0DAD?style=for-the-badge&logo=ipfs&logoColor=white" />
-    <img src="https://img.shields.io/badge/Testing-Foundry_Forge-FF4500?style=for-the-badge&logo=foundry&logoColor=white" />
-    <img src="https://img.shields.io/badge/Asset-Dynamic_Metadata-00BFFF?style=for-the-badge&logo=json&logoColor=white" />
   </p>
 
   <p width="90%">
@@ -106,11 +103,6 @@ The project is built using the modern **Ethereum Development Stack**.
 * **Framework:** Foundry (Forge, Cast, Anvil)
 * **Standard:** ERC-721 (OpenZeppelin)
 * **Storage:** IPFS (Pinata / NFT.Storage)
-
----
-
-<div align="center">
-<img src="https://raw.githubusercontent.com/rajput2107/rajput2107/master/Assets/Developer.gif" width="50" />
 
 
 
