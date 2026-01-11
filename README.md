@@ -38,27 +38,33 @@
 <div align="center">
 <table>
   <tr>
-    <td align="center" width="180px">
+    <td align="center" width="250px">
       <a href="#-executive-summary">
-        <img src="https://img.icons8.com/ios-filled/40/9d4edd/idea.png" style="margin-bottom: 10px;" /><br />
+        <img src="https://img.icons8.com/ios-filled/25/9d4edd/idea.png" style="vertical-align: middle; margin-right: 10px;" />
         <b>Executive Summary</b>
       </a>
     </td>
-    <td align="center" width="180px">
+  </tr>
+  <tr>
+    <td align="center" width="250px">
       <a href="#%EF%B8%8F-ipfs-architecture">
-        <img src="https://img.icons8.com/ios-filled/40/9d4edd/flow-chart.png" style="margin-bottom: 10px;" /><br />
+        <img src="https://img.icons8.com/ios-filled/25/9d4edd/flow-chart.png" style="vertical-align: middle; margin-right: 10px;" />
         <b>System Architecture</b>
       </a>
     </td>
-    <td align="center" width="180px">
+  </tr>
+  <tr>
+    <td align="center" width="250px">
       <a href="#%EF%B8%8F-script-automation">
-        <img src="https://img.icons8.com/ios-filled/40/9d4edd/console.png" style="margin-bottom: 10px;" /><br />
+        <img src="https://img.icons8.com/ios-filled/25/9d4edd/console.png" style="vertical-align: middle; margin-right: 10px;" />
         <b>Script Automation</b>
       </a>
     </td>
-    <td align="center" width="180px">
+  </tr>
+  <tr>
+    <td align="center" width="250px">
       <a href="#-tech-stack">
-        <img src="https://img.icons8.com/ios-filled/40/9d4edd/source-code.png" style="margin-bottom: 10px;" /><br />
+        <img src="https://img.icons8.com/ios-filled/25/9d4edd/source-code.png" style="vertical-align: middle; margin-right: 10px;" />
         <b>Tech Stack</b>
       </a>
     </td>
