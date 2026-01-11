@@ -35,36 +35,30 @@
 
 ## 📑 Protocol Navigation
 
-<div align="center">
+<div align="left">
 <table>
   <tr>
-    <td align="center" width="250px">
+    <td align="center" width="180px">
       <a href="#-executive-summary">
-        <img src="https://img.icons8.com/ios-filled/25/9d4edd/idea.png" style="vertical-align: middle; margin-right: 10px;" />
+        <img src="https://img.icons8.com/ios-filled/25/9d4edd/idea.png" style="margin-bottom: 10px;" /><br />
         <b>Executive Summary</b>
       </a>
     </td>
-  </tr>
-  <tr>
-    <td align="center" width="250px">
+    <td align="center" width="180px">
       <a href="#%EF%B8%8F-ipfs-architecture">
-        <img src="https://img.icons8.com/ios-filled/25/9d4edd/flow-chart.png" style="vertical-align: middle; margin-right: 10px;" />
+        <img src="https://img.icons8.com/ios-filled/25/9d4edd/flow-chart.png" style="margin-bottom: 10px;" /><br />
         <b>System Architecture</b>
       </a>
     </td>
-  </tr>
-  <tr>
-    <td align="center" width="250px">
+    <td align="center" width="180px">
       <a href="#%EF%B8%8F-script-automation">
-        <img src="https://img.icons8.com/ios-filled/25/9d4edd/console.png" style="vertical-align: middle; margin-right: 10px;" />
+        <img src="https://img.icons8.com/ios-filled/25/9d4edd/console.png" style="margin-bottom: 10px;" /><br />
         <b>Script Automation</b>
       </a>
     </td>
-  </tr>
-  <tr>
-    <td align="center" width="250px">
+    <td align="center" width="180px">
       <a href="#-tech-stack">
-        <img src="https://img.icons8.com/ios-filled/25/9d4edd/source-code.png" style="vertical-align: middle; margin-right: 10px;" />
+        <img src="https://img.icons8.com/ios-filled/25/9d4edd/source-code.png" style="margin-bottom: 10px;" /><br />
         <b>Tech Stack</b>
       </a>
     </td>
