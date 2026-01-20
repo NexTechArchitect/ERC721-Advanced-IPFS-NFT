@@ -22,11 +22,11 @@ contract CuteCatNFTTest is Test {
         vm.prank(owner);
         nft = new CuteCatNFT(baseURI);
     }
-    //Owner 
+
     function testOwner() public {
         assertEq(nft.owner(), owner);
     }
-    //Active
+
     function testMintActiveInitially() public {
         assertTrue(nft.mintActive());
     }
