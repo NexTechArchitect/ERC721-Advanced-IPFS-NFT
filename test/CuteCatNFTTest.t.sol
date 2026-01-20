@@ -4,7 +4,6 @@ pragma solidity ^0.8.18;
 import "forge-std/Test.sol";
 import "../src/CuteCatNFT.sol";
 
-
 contract CuteCatNFTTest is Test {
     CuteCatNFT nft;
     address owner = address(0xA1);
@@ -31,7 +30,7 @@ contract CuteCatNFTTest is Test {
     function testMintActiveInitially() public {
         assertTrue(nft.mintActive());
     }
-    //mint
+
     function testMintOne() public {
         vm.prank(user1);
         nft.mint{value: 0.0005 ether}(1);
