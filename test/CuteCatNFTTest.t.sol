@@ -74,7 +74,7 @@ contract CuteCatNFTTest is Test {
         nft.mint{value: 0.0005 ether}(1);
         assertEq(nft.tokenMinters(0), user1);
     }
-    //burn test 
+ 
     function testBurnNft() public {
         vm.prank(user1);
         nft.mint{value: 0.0005 ether}(1);
