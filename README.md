@@ -146,24 +146,8 @@ The project is built using the modern **Ethereum Development Stack**.
 ---
 
 <div align="center">
-
-
-
-
-
 <b>Engineered by NEXTECHARHITECT</b>
-
-
-
-
 <i>Smart Contract Developer · Solidity · Foundry · Web3 Engineering</i>
-
-
-
-
-
-
-
 <a href="https://github.com/NexTechArchitect">GitHub</a> •
 <a href="https://www.google.com/search?q=https://twitter.com/NexTechArchitect">Twitter</a>
 </div>
